@@ -32,7 +32,7 @@ const sendPostRequest = async function(data) {
 }
 
 const processDocument = function() {
-    connectionPool.query('SELECT title, contents FROM blog WHERE status = \'DRAFT\'', (err, result) => {
+    connectionPool.query('SELECT title, contents FROM document WHERE status = \'DRAFT\'', (err, result) => {
         if (result.length > 0) {
             updateDocumentStatus();
             result.forEach((value) => {
@@ -51,7 +51,7 @@ const processDocument = function() {
 }
 
 const updateDocumentStatus = function() {
-    connectionPool.query('UPDATE blog SET status = \'PUBLISHED\' WHERE status = \'DRAFT\'', (err, result) => {
+    connectionPool.query('UPDATE document SET status = \'PUBLISHED\' WHERE status = \'DRAFT\'', (err, result) => {
         console.log(`Number of posts updated: ${result.affectedRows}`);
     });
 }

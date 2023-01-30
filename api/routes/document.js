@@ -13,7 +13,7 @@ const postDocumentValidation = {
 };
 
 router.post('/', validate(postDocumentValidation, {}, {}), (req, res, next) => {
-    var query = dbPool.query('INSERT INTO blog SET ?', req.body, (error, result) => {
+    var query = dbPool.query('INSERT INTO document SET ?', req.body, (error, result) => {
         if (error) {
             res.status(500)
                .type('json')
@@ -31,7 +31,7 @@ router.post('/', validate(postDocumentValidation, {}, {}), (req, res, next) => {
 
 // TESTING receive data from worker
 router.post('/receive', validate(postDocumentValidation, {}, {}), (req, res, next) => {
-    var query = dbPool.query('INSERT INTO blog2 SET ?', req.body, (error, result) => {
+    var query = dbPool.query('INSERT INTO document2 SET ?', req.body, (error, result) => {
         if (error) {
             res.status(500)
                .type('json')
